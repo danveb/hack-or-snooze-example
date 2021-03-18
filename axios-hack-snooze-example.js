@@ -22,13 +22,24 @@ async function getUsers() {
 // - POST name, username, password as body 
 
 // async function
-async function signUp(username, password, name) {
-    // include username, password, name as parameters
-    const res = await axios.post('https://hack-or-snooze-v3.herokuapp.com/signup', { user: { name, username, password }}); 
-    console.log(res); 
-}; 
-// getUsers()
-signUp('butters', 'wasabi', 'Butters'); // 409 (conflict) error 
+// async function signUp(username, password, name) {
+//     // include username, password, name as parameters
+//     const res = await axios.post('https://hack-or-snooze-v3.herokuapp.com/signup', { user: { name, username, password }}); 
+//     console.log(res); 
+// }; 
+// // getUsers()
+// signUp('butters', 'wasabi', 'Butters'); // 409 (conflict) error 
+
+/* code now works; looks like I was repeating the signup details over an over. Just tried on DevTools and did work */ 
+async function signup() {
+    const response = axios({
+        url: "https://hack-or-snooze-v3.herokuapp.com/signup",
+        method: "POST",
+        data: { "user": { "username": "dbae", "password":"Test@1234", "name": "Danny" } },
+      });
+}
+signup()
+
 
 // async function 
 async function login(username, password) {
